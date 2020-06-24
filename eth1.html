@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./node_modules/web3/dist/web3.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+	<h1>Coursetro Instructor</h1>
+
+	<h2 id="instructor"></h2>
+
+	<label for="name" >Instructor Name</label>
+	<input id="name" type="text">
+
+	<label for="name" class="col-lg-2 control-label">Instructor Age</label>
+	<input id="age" type="text">
+
+	<button id="button">Update Instructor</button>
+	<input type="submit">
+    <script>
+
+        if (typeof web3 !== 'undefined') {
+            web3 = new Web3(web3.currentProvider);
+        } else {
+            // set the provider you want from Web3.providers
+            web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:8545"));
+        }
+        web3.eth.defaultAccount = web3.eth.accounts[0];
+       
+        var gstContract = web3.eth.contract([
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "Aname",
+				"type": "string"
+			},
+			{
+				"name": "Aid",
+				"type": "string"
+			}
+		],
+		"name": "addAdmin",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "Cid",
+				"type": "string"
+			},
+			{
+				"name": "Cname",
+				"type": "string"
+			},
+			{
+				"name": "Cmobile",
+				"type": "string"
+			},
+			{
+				"name": "Cage",
+				"type": "uint256"
+			},
+			{
+				"name": "Cgender",
+				"type": "string"
+			}
+		],
+		"name": "addCustomer",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "G_acnt_no",
+				"type": "uint256"
+			},
+			{
+				"name": "G_ifsc_code",
+				"type": "string"
+			}
+		],
+		"name": "addGovt",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "Mname",
+				"type": "string"
+			},
+			{
+				"name": "Mmobile",
+				"type": "string"
+			},
+			{
+				"name": "Mgender",
+				"type": "string"
+			},
+			{
+				"name": "Mage",
+				"type": "uint256"
+			}
+		],
+		"name": "addMerchant",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "Maccount_no",
+				"type": "uint256"
+			},
+			{
+				"name": "Gst_amount",
+				"type": "uint256"
+			},
+			{
+				"name": "Non_gst",
+				"type": "uint256"
+			}
+		],
+		"name": "addSystem",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "getCustomer",
+		"outputs": [
+			{
+				"name": "",
+				"type": "string"
+			},
+			{
+				"name": "",
+				"type": "string"
+			},
+			{
+				"name": "",
+				"type": "uint256"
+			},
+			{
+				"name": "",
+				"type": "string"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "getMerchant",
+		"outputs": [
+			{
+				"name": "",
+				"type": "string"
+			},
+			{
+				"name": "",
+				"type": "string"
+			},
+			{
+				"name": "",
+				"type": "string"
+			},
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	}
+]);
+        var gst = gstContract.at('0x4347E5F9A3574143E8b780eA15c6ad29df8Ca9D6');
+        console.log(gst);
+        gst.getInstructor(function(error, result){
+            if(!error)
+                {
+                    $("#instructor").html(result[0]+' ('+result[1]+' years old)');
+                    console.log(result);
+                }
+            else
+                console.error(error);
+        });
+        
+        $("#button").click(function() {
+            gst.setInstructor($("#name").val(), $("#age").val());
+            Coursetro.getInstructor(function(error, result){
+            if(!error)
+                {
+                    $("#instructor").html(result[0]+' ('+result[1]+' years old)');
+                    console.log(result);
+                }
+            else
+                console.error(error);
+        });
+        });
+
+        
+
+    </script>
+
+</body>
+</html>

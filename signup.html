@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>َSignup</title>
+    <link rel="stylesheet" href="signup.css">
+    <body>
+      <a href="home.html"><h2>Home</h2></a>
+    <form class="box" action="home.html" method="post">
+    <h1>SIGN UP as MERCHANT</h1>
+    <input type="text" name="" placeholder="Name" id="name">
+    <input type="text" name="" placeholder="Mobile" id="mob">
+    <input type="text" name="" placeholder="GST no." id="gst">
+    <input type="text" name="" placeholder="Age" id="age">
+    <input type="text" name="" placeholder="Gender" id="gen">
+    <input type="password" name="" placeholder="Password">
+    <button id="button">Submit</button>
+  </form>
+  
+    </body>
+    </head>
+      
+      <script src="./node_modules/web3/dist/web3.min.js"></script>
+      <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+     <script>
+       if (typeof web3 !== 'undefined') {
+            web3 = new Web3(web3.currentProvider);
+        } else {
+            // set the provider you want from Web3.providers
+            web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:8545"));
+        }
+        web3.eth.defaultAccount = web3.eth.accounts[0];
+       
+        var gstContract = web3.eth.contract([
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "Aname",
+				"type": "string"
+			},
+			{
+				"name": "Aid",
+				"type": "string"
+			}
+		],
+		"name": "addAdmin",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "Cid",
+				"type": "string"
+			},
+			{
+				"name": "Cname",
+				"type": "string"
+			},
+			{
+				"name": "Cmobile",
+				"type": "string"
+			},
+			{
+				"name": "Cage",
+				"type": "uint256"
+			},
+			{
+				"name": "Cgender",
+				"type": "string"
+			}
+		],
+		"name": "addCustomer",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "G_acnt_no",
+				"type": "uint256"
+			},
+			{
+				"name": "G_ifsc_code",
+				"type": "string"
+			}
+		],
+		"name": "addGovt",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "Mname",
+				"type": "string"
+			},
+			{
+				"name": "Mmobile",
+				"type": "string"
+			},
+			{
+				"name": "Mgender",
+				"type": "string"
+			},
+			{
+				"name": "Mage",
+				"type": "uint256"
+			}
+		],
+		"name": "addMerchant",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "Maccount_no",
+				"type": "uint256"
+			},
+			{
+				"name": "Gst_amount",
+				"type": "uint256"
+			},
+			{
+				"name": "Non_gst",
+				"type": "uint256"
+			}
+		],
+		"name": "addSystem",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "getCustomer",
+		"outputs": [
+			{
+				"name": "",
+				"type": "string"
+			},
+			{
+				"name": "",
+				"type": "string"
+			},
+			{
+				"name": "",
+				"type": "uint256"
+			},
+			{
+				"name": "",
+				"type": "string"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "getMerchant",
+		"outputs": [
+			{
+				"name": "",
+				"type": "string"
+			},
+			{
+				"name": "",
+				"type": "string"
+			},
+			{
+				"name": "",
+				"type": "string"
+			},
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	}
+]);
+        var gst = gstContract.at('0x4347E5F9A3574143E8b780eA15c6ad29df8Ca9D6');
+        console.log(gst);
+        
+        $("#button").click(function() {
+            gst.addMerchant($("#name").val(),$("#mob").val(), $("#gen").val(),$("#age").val());
+        });
+</script>
+        
+  
+  
