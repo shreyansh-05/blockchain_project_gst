@@ -1,0 +1,50 @@
+
+body{
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    background:#072336;
+  }
+  h2{
+    float:left;
+    margin-top:5px;
+    margin-left:5px ;
+    color:white;
+  }
+  
+.main{
+    width: 300px;
+    padding: 40px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    text-align: center;
+}
+.main h1{
+    color: white;
+    font-weight: 500;
+}
+.img1 img{
+    display:inline-block;
+    width:250px;
+    height:auto;
+    padding-top:40px;
+}
+.main input[type = "submit"],.main input[type = "submit"]{
+    border:0;
+    background: none;
+    display: block;
+    margin: 20px auto;
+    text-align: center;
+    border: 2px solid #2ecc71;
+    padding: 14px 40px;
+    outline: none;
+    color: white;
+    border-radius: 24px;
+    transition: 0.25s;
+    cursor: pointer;
+  }
+  .main input[type = "submit"]:hover,.main input[type = "submit"]:hover{
+    background: #2ecc71;
+  }

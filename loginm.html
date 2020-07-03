@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>َLogin as Merchant</title>
+    <script src="./node_modules/web3/dist/web3.min.js"></script>
+	  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="smart.js"></script>
+    <script>
+       $(document).ready(function(){
+       $("#login").click(function(){
+           var gst=$("#gst_id").val();
+           var pass=$("#pass").val();
+           if(typeof web3!='undefined'){
+               web3=new Web3(web3.currentProvider);
+           }else{
+               web3=new Web3(new Web3.providers.HttpProvider("HTTP://127.0.0.1:7545"));
+           }
+           web3.eth.defaultAccount=web3.eth.accounts[0];
+           var sc=web3.eth.contract(ABI);
+           var tc=sc.at(address);
+           var user = tc.checklogin(gst,pass,{from:web3.eth.defaultAccount,gas:2000000});
+           alert(gst);
+           alert(pass);
+           if(user=="true"){
+            document.location.href = "billoptions.html";
+           }
+           else{
+             alert("Enter correct id and password");
+           }
+       });
+      });
+     </script>
+    <link rel="stylesheet" href="loginm.css">
+
+  </head>
+  <body>
+    <a href="index.html"><h2>Home</h2></a>
+        <img src="userlogo.png">
+        <form class="box" method="post">
+        <h1>LOGIN as MERCHANT</h1>
+        <input type="text" name="" placeholder="GST Id" id="gst_id">
+        <input type="password" name="" placeholder="Password" id="pass">
+        <input type="button" name="" value="Login" id="login">
+      </form>
+
+
+  </body>
+</html>

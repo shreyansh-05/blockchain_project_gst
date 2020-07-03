@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+	<title>َSignup</title>
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <link rel="stylesheet" href="css/magnific-popup.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/themify-icons.css">
+    <link rel="stylesheet" href="css/nice-select.css">
+    <link rel="stylesheet" href="css/flaticon.css">
+    <link rel="stylesheet" href="css/gijgo.css">
+    <link rel="stylesheet" href="css/animate.min.css">
+    <link rel="stylesheet" href="css/slick.css">
+    <link rel="stylesheet" href="css/slicknav.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style1.css">
+    <link rel="stylesheet" href="css/responsive.css">
+	<script src="./node_modules/web3/dist/web3.min.js"></script>
+	  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+	  <script src="smart.js"></script>
+     <script>
+       $(document).ready(function(){
+        $("#register").click(function(){
+            var nam=$("#name").val();
+			var emai=$("#em").val();
+			var gstn=$("#gst").val();
+			var a=$("#age").val();
+			var mobil=$("#mob").val();
+			var gend=$("#gen").val();
+            var pass=$("#pass").val();
+            if(typeof web3!='undefined'){
+                web3=new Web3(web3.currentProvider);
+            }else{
+                web3=new Web3(new Web3.providers.HttpProvider("HTTP://127.0.0.1:7545"));
+            }
+            web3.eth.defaultAccount=web3.eth.accounts[0];
+            var sc=web3.eth.contract(ABI);
+			var tc=sc.at(address);
+            tc.registerMerchant(nam,emai,gstn,a,mobil,gend,pass,{from:web3.eth.defaultAccount,gas:1000000});
+            alert("User Created");
+        });
+    }); 
+    </script>
+    <link rel="stylesheet" href="loginm.css">
+    <body>
+		<header>
+			<div class="header-area ">
+				<div id="sticky-header" class="main-header-area">
+					<div class="container-fluid p-0">
+						<div class="row align-items-center no-gutters">
+							<div class="col-xl-2 col-lg-2">
+								<div class="logo-img">
+									<a href="index.html">
+										<img src="img/logo.png" class="imags" alt="">
+									</a>
+								</div>
+							</div>
+							<div class="col-xl-8 col-lg-8">
+								<div class="main-menu  d-none d-lg-block text-center">
+									<nav>
+										<ul id="navigation">
+											<li><a href = "index.html" >Home</a></li>
+											<li><a href = "signup.html">Signup (Merchant)</a></li>
+											<li><a href="ourTeam.html">Our Team</a></li>
+											<li><a href="contact.html" >Contact</a></li>
+										</ul>
+									</nav>
+								</div>
+							</div>
+							<div class="col-12">
+								<div class="mobile_menu d-block d-lg-none"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</header>
+	
+    <form class="box" method="post">
+	</br>
+</br>
+</br>
+    <h1>SIGN UP as Merchant</h1>
+	<input type="text" name="" placeholder="Name" id="name">
+	<input type="text" name="" placeholder="abc@gmail.com" id="em">
+	<input type="text" name="" placeholder="GST no." id="gst">
+	<input type="text" name="" placeholder="Age" id="age">
+	<input type="text" name="" placeholder="Mobile" id="mob">
+    <input type="text" name="" placeholder="Gender" id="gen">
+    <input type="password" name="" placeholder="Password" id="pass">
+	<input type="button" value="Register" id="register">
+  </form>
+  
+    </body>
+    </head>
+   </html>   
+      
+        
+  
+  

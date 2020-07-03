@@ -1,0 +1,15 @@
+{"name": "GST_chain",
+    "short_name": "HOME",
+    "start_url": "index.html",
+    "display": "standalone",
+    
+    "background_color": "#fff",
+    "description": "news",
+    "icons": [
+      {
+        "src": "userlogo.png",
+        "sizes": "194x194",
+        "type": "image/png"
+      }
+    ]
+  }
