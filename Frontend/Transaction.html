@@ -15,7 +15,6 @@
     <link rel="stylesheet" href="css/slicknav.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/style1.css">
-    <link rel="stylesheet" href="css/responsive.css">
         <link href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
         <script src="./node_modules/web3/dist/web3.min.js"></script>
 	    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
@@ -38,7 +37,9 @@
            {
                     var pTag= document.getElementById('pPrint');
                     var user = tc.getbill2(v,i,{from:web3.eth.defaultAccount,gas:2000000});
-					pTag.innerHTML += user + "<br/>" 
+					if(user!=",,,,0"){
+                        pTag.innerHTML += user + "<br/>" 
+                    } 
 			}
        });
       });
@@ -77,15 +78,20 @@
 				</div>
 			</div>
 		</header>
-  
-    <img src ="flag.jpg" height="700px" width="1400px">
+    <div class="image">
+    <img src ="flag.jpeg" height="700px" width="1400px">
+</div>
         <div class="wrap">
             <p><h1>Search transaction by Vid</h1></p>
-             <form  action="invoice.html" >
-               <input type="text" class="searchTerm" placeholder="Enter Vid" id="vid"><br>
-               <input type="button" value="Search" id="bt">
-                 <i class="fa fa-search"></i>
-                 <p id="pPrint"></p>
+        </br>
+             <form>
+               <input type="text" placeholder="Enter Vid" id="vid"><br>
+             </br>
+            </br>
+               <input type="button" class="boxed-btn3"  value="Search" id="bt">
+        </br>
+    </br>
+               <p id="pPrint"></p>
              </form>
               
             

@@ -3,6 +3,20 @@
   <head>
     <meta charset="utf-8">
     <title>َLogin as Merchant</title>
+    <link rel="stylesheet" type="text/css" href="loginm.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <link rel="stylesheet" href="css/magnific-popup.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/themify-icons.css">
+    <link rel="stylesheet" href="css/nice-select.css">
+    <link rel="stylesheet" href="css/flaticon.css">
+    <link rel="stylesheet" href="css/gijgo.css">
+    <link rel="stylesheet" href="css/animate.min.css">
+    <link rel="stylesheet" href="css/slick.css">
+    <link rel="stylesheet" href="css/slicknav.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style1.css">
     <script src="./node_modules/web3/dist/web3.min.js"></script>
 	  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
     <script src="smart.js"></script>
@@ -20,8 +34,6 @@
            var sc=web3.eth.contract(ABI);
            var tc=sc.at(address);
            var user = tc.checklogin(gst,pass,{from:web3.eth.defaultAccount,gas:2000000});
-           alert(gst);
-           alert(pass);
            if(user=="true"){
             document.location.href = "billoptions.html";
            }
@@ -34,16 +46,55 @@
     <link rel="stylesheet" href="loginm.css">
 
   </head>
-  <body>
-    <a href="index.html"><h2>Home</h2></a>
-        <img src="userlogo.png">
+  <body style="background-color:#072336">
+    
+    <header>
+      <div class="header-area ">
+          <div id="sticky-header" class="main-header-area">
+              <div class="container-fluid p-0">
+                  <div class="row align-items-center no-gutters">
+                      <div class="col-xl-2 col-lg-2">
+                          <div class="logo-img">
+                              <a href="index.html">
+                                  <img src="img/logo.png" class="imags" alt="">
+                              </a>
+                          </div>
+                      </div>
+                      <div class="col-xl-8 col-lg-8">
+                          <div class="main-menu  d-none d-lg-block text-center">
+                              <nav>
+                                  <ul id="navigation">
+                                      <li><a href = "index.html" >Home</a></li>
+                                      <li><a href = "signup.html">Signup (Merchant)</a></li>
+                                      <li><a href="login.html" >Login</a></li>
+                                      <li><a href="ourTeam.html">Our Team</a></li>
+                                      <li><a href="contact.html" >Contact</a></li>
+                                  </ul>
+                              </nav>
+                          </div>
+                      </div>
+                      <div class="col-12">
+                          <div class="mobile_menu d-block d-lg-none"></div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </header>
+</br>
+</br>
+</br>
+    <img src="userlogo.png">
+
         <form class="box" method="post">
+        </br>
+        </br>
         <h1>LOGIN as MERCHANT</h1>
         <input type="text" name="" placeholder="GST Id" id="gst_id">
         <input type="password" name="" placeholder="Password" id="pass">
         <input type="button" name="" value="Login" id="login">
       </form>
-
+    
 
   </body>
 </html>

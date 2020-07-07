@@ -82,3 +82,7 @@ img{
   .box input[type = "submit"]:hover{
     background: #2ecc71;
   }
+  #pPrint{
+    color: white;
+    font-size: large;
+  }
