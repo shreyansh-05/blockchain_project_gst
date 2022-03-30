@@ -1,4 +1,4 @@
-var address = "0xa629a30709b174cEf0773aF38e4C1f66bDB83e1D";
+var address = "0xA2618d9534dF674b81BD66Ae00316d5a1089F8Cf";
 var ABI = [
 	{
 		"constant": false,
